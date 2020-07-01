@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 </head>
 <body>
     <div id="app">
@@ -38,6 +39,19 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link p-0 m-0" href="{{ route('cart.index') }}">
+                                <i class="fas fa-cart-arrow-down text-success fa-2x"></i>
+                                <div class="badge badge-danger">
+                                    @if(Auth::user())
+                                    {{ Cart::session(auth()->id())->getContent()->count()
+                                    }}
+                                    @else
+                                    {{Cart::getContent()->count()}}
+                                    @endif
+                                </div>
+                            </a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -72,7 +86,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 container">
             @yield('content')
         </main>
     </div>
