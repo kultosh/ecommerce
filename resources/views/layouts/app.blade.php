@@ -43,11 +43,11 @@
                             <a class="nav-link p-0 m-0" href="{{ route('cart.index') }}">
                                 <i class="fas fa-cart-arrow-down text-success fa-2x"></i>
                                 <div class="badge badge-danger">
-                                    @if(Auth::user())
-                                    {{ Cart::session(auth()->id())->getContent()->count()
+                                    @auth
+                                        {{ Cart::session(auth()->id())->getContent()->count()
                                     }}
                                     @else
-                                    {{Cart::getContent()->count()}}
+                                        0
                                     @endif
                                 </div>
                             </a>

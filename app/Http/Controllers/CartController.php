@@ -29,6 +29,11 @@ class CartController extends Controller
         return view('cart.index', compact('cartItems'));
     }
 
+    public function checkout()
+    {
+        return view('cart.checkout');
+    }
+
     public function update($rowId)
     {
         // update the item on cart
