@@ -35,7 +35,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd(\Cart::session(auth()->id())->getContent());
         $request->validate([
             'shipping_fullname' => 'required',
             'shipping_state' => 'required',
@@ -43,6 +42,7 @@ class OrderController extends Controller
             'shipping_address' => 'required',
             'shipping_phone' => 'required',
             'shipping_zipcode' => 'required',
+            'payment_method' => 'required',
         ]);
 
         $order = new Order();
@@ -90,8 +90,14 @@ class OrderController extends Controller
             $order->items()->attach($item->id, ['price'=>$item->price, 'quantity'=>$item->quantity]);
         }
 
+        //payment
+        if(request('payment_method') == 'paypal')
+        {
+            return redirect()->route('paypal.checkout');
+        }
+
         //empty cart
-        \Cart::session(auth()->id())->clear();
+        //\Cart::session(auth()->id())->clear();
 
         return "Order completed, Thank You for the order";
     }
