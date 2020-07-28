@@ -1,29 +1,52 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
-use TCG\Voyager\Models\Role;
-use TCG\Voyager\Models\User;
 
 class UsersTableSeeder extends Seeder
 {
+
     /**
-     * Auto generated seed file.
+     * Auto generated seed file
      *
      * @return void
      */
     public function run()
     {
-        if (User::count() == 0) {
-            $role = Role::where('name', 'admin')->firstOrFail();
+        
 
-            User::create([
-                'name'           => 'Admin',
-                'email'          => 'admin@admin.com',
-                'password'       => bcrypt('password'),
-                'remember_token' => Str::random(60),
-                'role_id'        => $role->id,
-            ]);
-        }
+        \DB::table('users')->delete();
+        
+        \DB::table('users')->insert(array (
+            0 => 
+            array (
+                'id' => 2,
+                'name' => 'Prasidha Tamang',
+                'email' => 'admin2@admin.com',
+                'email_verified_at' => NULL,
+                'password' => '$2y$10$IbZroQom5d/e/16SOR4s0eQlVr46FOQxhZ9TaTvb21LLVtldwxBI2',
+                'remember_token' => NULL,
+                'created_at' => '2020-06-30 14:13:26',
+                'updated_at' => '2020-06-30 14:13:26',
+                'avatar' => 'users/default.png',
+                'role_id' => NULL,
+                'settings' => NULL,
+            ),
+            1 => 
+            array (
+                'id' => 1,
+                'name' => 'Santosh Tamang',
+                'email' => 'admin@admin.com',
+                'email_verified_at' => NULL,
+                'password' => '$2y$10$coYf4YxYVoUCi6Y79p1ACufdJ4Xnc8vWThToDQVgVlDqjAaer.5La',
+                'remember_token' => NULL,
+                'created_at' => '2020-06-29 11:52:17',
+                'updated_at' => '2020-07-24 13:09:41',
+                'avatar' => 'users/default.png',
+                'role_id' => 1,
+                'settings' => NULL,
+            ),
+        ));
+        
+        
     }
 }
