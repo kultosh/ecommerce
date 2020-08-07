@@ -12,14 +12,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('users')->delete();
-        
+
         \DB::table('users')->insert(array (
-            0 => 
+            0 =>
             array (
-                'id' => 2,
+                'id' => 1,
                 'name' => 'Prasidha Tamang',
                 'email' => 'admin2@admin.com',
                 'email_verified_at' => NULL,
@@ -31,9 +31,9 @@ class UsersTableSeeder extends Seeder
                 'role_id' => NULL,
                 'settings' => NULL,
             ),
-            1 => 
+            1 =>
             array (
-                'id' => 1,
+                'id' => 2,
                 'name' => 'Santosh Tamang',
                 'email' => 'admin@admin.com',
                 'email_verified_at' => NULL,
@@ -46,7 +46,7 @@ class UsersTableSeeder extends Seeder
                 'settings' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }
