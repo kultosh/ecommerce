@@ -12,12 +12,12 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('posts')->delete();
-        
+
         \DB::table('posts')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'author_id' => 0,
@@ -35,7 +35,7 @@ class PostsTableSeeder extends Seeder
                 'created_at' => '2020-07-24 13:02:10',
                 'updated_at' => '2020-07-24 13:02:10',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'author_id' => 0,
@@ -55,7 +55,7 @@ class PostsTableSeeder extends Seeder
                 'created_at' => '2020-07-24 13:02:10',
                 'updated_at' => '2020-07-24 13:02:10',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'author_id' => 0,
@@ -73,7 +73,7 @@ class PostsTableSeeder extends Seeder
                 'created_at' => '2020-07-24 13:02:10',
                 'updated_at' => '2020-07-24 13:02:10',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'author_id' => 0,
@@ -94,7 +94,7 @@ class PostsTableSeeder extends Seeder
                 'updated_at' => '2020-07-24 13:02:10',
             ),
         ));
-        
-        
+
+
     }
 }

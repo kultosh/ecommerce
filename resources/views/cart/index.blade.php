@@ -37,8 +37,7 @@
                                             <td class="product-remove"><a href="{{ route('cart.destroy', $item->id) }}"><i
                                                         class="pe-7s-close"></i></a></td>
                                             <td class="product-thumbnail">
-                                                <a href="#"><img
-                                                        src="#"
+                                                <a href="#"><img src="/storage/{{ $item->attributes['cover_img'] }}"
                                                         alt="Img"></a>
                                             </td>
                                             <td class="product-name"><a href="#">{{ $item->name }}</a></td>
@@ -64,9 +63,11 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="coupon-all">
                                     <div class="coupon">
-                                        <input id="coupon_code" class="input-text" name="coupon_code" value=""
-                                            placeholder="Coupon code" type="text">
-                                        <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
+                                        <form action="{{ route('cart.coupon') }}" method="get">
+                                            <input id="coupon_code" class="input-text" name="coupon_code" value=""
+                                                placeholder="Coupon code" type="text">
+                                            <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +78,7 @@
                                     <h2>Cart totals</h2>
                                     <ul>
                                         <li>Subtotal<span>100.00</span></li>
-                                        <li>Total<span>{{ \Cart::session(auth()->id())->getTotal() }}</span></li>
+                                        <li>Total<span>$ {{ \Cart::session(auth()->id())->getTotal() }}</span></li>
                                     </ul>
                                     <a href="{{ route('cart.checkout') }}">Proceed to checkout</a>
                                 </div>
