@@ -60,23 +60,4 @@ class CartController extends Controller
 
         return back()->withMessage('coupon applied');
     }
-
-    // public function update($rowId)
-    // {
-    //     // update the item on cart
-    //     \Cart::session(auth()->id())->update($rowId,[
-    //         'quantity' => array(
-    //             'relative' => false,
-    //             'value' => request('quantity')
-    //         ),
-    //     ]);
-
-    //     return back();
-    // }
-
-    // public function destroy($itemId)
-    // {
-    //     \Cart::session(auth()->id())->remove($itemId);
-    //     return back();
-    // }
 }

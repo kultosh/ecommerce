@@ -36,22 +36,16 @@
                                 <tbody>
                                     @foreach ($cartItems as $item)
                                         <tr>
-                                            {{-- <td class="product-remove">
-                                                <livewire:remove-cart :remitem="$item" :keys="$item['id']" />
-                                            </td> --}}
                                             <td class="product-remove"><a
                                                     wire:click="removeFromCart({{ $item['id'] }})"><i
                                                         class="pe-7s-close"></i></a></td>
                                             <td class="product-thumbnail">
-                                                {{-- <a href="#"><img
-                                                        src="/storage/{{ $item['attributes']['cover_img'] }}"
-                                                        alt="Img"></a> --}}
                                                 <a href="#"><img src="#" alt="Img"></a>
                                             </td>
                                             <td class="product-name"><a href="#">{{ $item['name'] }}</a></td>
                                             <td class="product-price-cart"><span class="amount">${{ Cart::session(auth()->id())->get($item['id'])
-                                                        ? Cart::session(auth()->id())->get($item['id'])->getPriceSum()
-                                                        : 0 }}</span>
+                                                ? Cart::session(auth()->id())->get($item['id'])->getPriceSum()
+                                                : 0 }}</span>
                                             </td>
                                             <td class="product-quantity">
                                                 <livewire:cart-update-form :item="$item" :key="$item['id']" />
