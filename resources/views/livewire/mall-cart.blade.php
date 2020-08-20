@@ -36,8 +36,11 @@
                                 <tbody>
                                     @foreach ($cartItems as $item)
                                         <tr>
+                                            {{-- <td class="product-remove">
+                                                <livewire:remove-cart :remitem="$item" :keys="$item['id']" />
+                                            </td> --}}
                                             <td class="product-remove"><a
-                                                    href="{{ route('cart.destroy', $item['id']) }}"><i
+                                                    wire:click="removeFromCart({{ $item['id'] }})"><i
                                                         class="pe-7s-close"></i></a></td>
                                             <td class="product-thumbnail">
                                                 {{-- <a href="#"><img
@@ -46,8 +49,9 @@
                                                 <a href="#"><img src="#" alt="Img"></a>
                                             </td>
                                             <td class="product-name"><a href="#">{{ $item['name'] }}</a></td>
-                                            <td class="product-price-cart"><span
-                                                    class="amount">${{ Cart::session(auth()->id())->get($item['id'])->getPriceSum() }}</span>
+                                            <td class="product-price-cart"><span class="amount">${{ Cart::session(auth()->id())->get($item['id'])
+                                                        ? Cart::session(auth()->id())->get($item['id'])->getPriceSum()
+                                                        : 0 }}</span>
                                             </td>
                                             <td class="product-quantity">
                                                 <livewire:cart-update-form :item="$item" :key="$item['id']" />
@@ -76,7 +80,8 @@
                                 <div class="cart-page-total">
                                     <h2>Cart totals</h2>
                                     <ul>
-                                        <li>Subtotal<span>$ {{ \Cart::session(auth()->id())->getSubTotal() }}</span></li>
+                                        <li>Subtotal<span>$ {{ \Cart::session(auth()->id())->getSubTotal() }}</span>
+                                        </li>
                                         <li>Total<span>$ {{ \Cart::session(auth()->id())->getTotal() }}</span></li>
                                     </ul>
                                     <a href="{{ route('cart.checkout') }}">Proceed to checkout</a>
