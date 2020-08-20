@@ -76,7 +76,7 @@
                                 <div class="cart-page-total">
                                     <h2>Cart totals</h2>
                                     <ul>
-                                        <li>Subtotal<span>100.00</span></li>
+                                        <li>Subtotal<span>$ {{ \Cart::session(auth()->id())->getSubTotal() }}</span></li>
                                         <li>Total<span>$ {{ \Cart::session(auth()->id())->getTotal() }}</span></li>
                                     </ul>
                                     <a href="{{ route('cart.checkout') }}">Proceed to checkout</a>
