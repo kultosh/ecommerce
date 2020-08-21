@@ -8,7 +8,7 @@ class MallCart extends Component
 {
     public $cartItems = [];
 
-    protected $listeners = ['cartUpdate' => 'onUpdate', 'removeCart' => 'removeCart'];
+    protected $listeners = ['cartUpdate' => 'onUpdate', 'removeCart' => 'onUpdate', 'couponDiscount' => 'onUpdate'];
 
     public function mount()
     {
@@ -18,11 +18,6 @@ class MallCart extends Component
     public function onUpdate()
     {
         // $this->cartItems = \Cart::session(auth()->id())->getContent()->toArray();
-        $this->mount();
-    }
-
-    public function removeCart()
-    {
         $this->mount();
     }
 
